@@ -9,8 +9,8 @@ class State extends Model
 {
     use HasFactory;
 
-    public function cities(Type $var = null)
-    {
-        $this->hasMany(City::class);
-    }
+    // public function cities(Type $var = null)
+    // {
+    //     $this->hasMany(City::class);
+    // }
 }

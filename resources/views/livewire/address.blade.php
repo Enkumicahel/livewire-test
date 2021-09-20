@@ -1,29 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Livewire test</title>
-    @livewireStyles
-</head>
-
-<body>
-    <form action="">
-        <label for="city"></label>
+<form action="" method="POST">
+    @csrf
+    <div>
+        <label for="state">Select State</label>
         <select name="" id="" wire:model="selectedState">
-            <option value="">Select a state</option>
-            @foreach ($cities as $city)
-                <option value="{{ $city->id }}">{{ $city->name }}</option>
+            <option value="0">Select a state</option>
+            @foreach ($states as $state)
+                <option value="{{ $state->id }}">{{ $state->name }}</option>
             @endforeach
         </select>
+    </div>
+
+    @if (!is_null($state_cities))
         <div>
-            {{ $selectedState }}
+            <label for="city">Select City</label>
+            <select name="" id="" wire:model="selectedCity">
+                <option value="0">Select a city</option>
+                @foreach ($state_cities as $city)
+                    <option value="{{ $city->id }}">{{ $city->name }}</option>
+                @endforeach
+            </select>
         </div>
-    </form>
-
-    @livewireScripts
-</body>
-
-</html>
+    @endif
+    <div>
+        {{ $selectedState }}
+    </div>
+</form>
